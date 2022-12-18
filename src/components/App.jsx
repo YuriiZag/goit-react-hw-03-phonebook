@@ -7,13 +7,15 @@ export class App extends React.Component {
     contacts: [],
     filter: '',
   };
-  
+
   componentDidMount() {
     const storedContacts = localStorage.getItem('contacts')
-    this.setState({
-      contacts: JSON.parse(storedContacts),
-    });
 
+    if (storedContacts !== null) {
+          this.setState({
+            contacts: JSON.parse(storedContacts),
+          });
+    }
   }
 
   componentDidUpdate(prevProps, prevState ) {
